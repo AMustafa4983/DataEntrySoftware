@@ -12,3 +12,7 @@ records2 = {'A':[0,0,1,2,3,1,4,2,0,1,4,3,2],"S S":[0,0,1,2,3,"Abs",4,2,0,'Abs',4
 wordObj.addReviewerData(records2)
 
 wordObj.saveExcel('test')
+
+SelectReviewers.showWindow()
+
+SelectReviewers.setReviewers()
