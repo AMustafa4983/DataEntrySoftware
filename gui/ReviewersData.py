@@ -2,12 +2,34 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_ReviewersData(object):
     
-    def openSelectReviwersWindow(self):
+    # def openSelectReviwersWindow(self):
+    #     from SelectReviewers import Ui_SelectReviewers
+    #     self.selectReviewersWindow = QtWidgets.QMainWindow()
+    #     self.selectReviewersUi = Ui_SelectReviewers()
+    #     self.selectReviewersUi.setupUi(self.selectReviewersWindow)
+    #     self.selectReviewersWindow.show()
+        
+    def passData(self):
         from SelectReviewers import Ui_SelectReviewers
         self.selectReviewersWindow = QtWidgets.QMainWindow()
         self.selectReviewersUi = Ui_SelectReviewers()
         self.selectReviewersUi.setupUi(self.selectReviewersWindow)
         self.selectReviewersWindow.show()
+        
+        data_of_RTUR = self.textEdit_RTUR.toPlainText()
+        data_of_RTUL = self.textEdit_RTUL.toPlainText()
+        data_of_RTUCR = self.textEdit_RTUCR.toPlainText()
+        data_of_RTUCL = self.textEdit_RTUCL.toPlainText()
+        data_of_PTR = self.textEdit_PTR.toPlainText()
+        data_of_PTL = self.textEdit_PTL.toPlainText()
+        data_of_FTR = self.textEdit_FTR.toPlainText()
+        data_of_FTL = self.textEdit_FTL.toPlainText()
+        data_of_HMR = self.textEdit_HMR.toPlainText()
+        data_of_HML = self.textEdit_HML.toPlainText()
+        data_of_PSR = self.textEdit_PSR.toPlainText()
+        data_of_PSL = self.textEdit_PSL.toPlainText()
+        data_of_ACU = self.textEdit_ACU.toPlainText()
+        
     
     def setupUi(self, ReviewersData):
         ReviewersData.setObjectName("ReviewersData")
@@ -129,7 +151,7 @@ class Ui_ReviewersData(object):
         
         self.pushButtonSave = QtWidgets.QPushButton(self.centralwidget)
         self.pushButtonSave.setGeometry(QtCore.QRect(280, 460, 171, 41))
-        self.pushButtonSave.clicked.connect(self.openSelectReviwersWindow)
+        self.pushButtonSave.clicked.connect(self.passData)
         self.pushButtonSave.clicked.connect(ReviewersData.close)
         font = QtGui.QFont()
         font.setPointSize(12)
