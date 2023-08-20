@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+data = []
 class Ui_ReviewersData(object):
     
     # def openSelectReviwersWindow(self):
@@ -10,7 +11,7 @@ class Ui_ReviewersData(object):
     #     self.selectReviewersWindow.show()
         
     def passData(self):
-        from SelectReviewers import Ui_SelectReviewers
+        from .SelectReviewers import Ui_SelectReviewers
         self.selectReviewersWindow = QtWidgets.QMainWindow()
         self.selectReviewersUi = Ui_SelectReviewers()
         self.selectReviewersUi.setupUi(self.selectReviewersWindow)
@@ -30,7 +31,22 @@ class Ui_ReviewersData(object):
         data_of_PSL = self.textEdit_PSL.toPlainText()
         data_of_ACU = self.textEdit_ACU.toPlainText()
         
+        self.setData([data_of_RTUR, data_of_RTUL, 
+                data_of_RTUCR, data_of_RTUCL, 
+                data_of_PTR, data_of_PTL, 
+                data_of_FTR, data_of_FTL,
+                data_of_HMR, data_of_HML,
+                data_of_PSR, data_of_PSL,
+                data_of_ACU])
+        
+    def setData(self, input):
+        data.append(input)
+        return None
     
+    def getData(self):
+        return data
+
+
     def setupUi(self, ReviewersData):
         ReviewersData.setObjectName("ReviewersData")
         ReviewersData.resize(716, 624)
@@ -380,6 +396,7 @@ class Ui_ReviewersData(object):
         self.retranslateUi(ReviewersData)
         QtCore.QMetaObject.connectSlotsByName(ReviewersData)
 
+
     def retranslateUi(self, ReviewersData):
         _translate = QtCore.QCoreApplication.translate
         ReviewersData.setWindowTitle(_translate("ReviewersData", "MainWindow"))
@@ -405,12 +422,4 @@ class Ui_ReviewersData(object):
         self.label_3.setText(_translate("ReviewersData", "R"))
         self.label_14.setText(_translate("ReviewersData", "R"))
 
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    ReviewersData = QtWidgets.QMainWindow()
-    ui = Ui_ReviewersData()
-    ui.setupUi(ReviewersData)
-    ReviewersData.show()
-    sys.exit(app.exec_())
+    

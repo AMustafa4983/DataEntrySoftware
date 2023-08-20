@@ -1,21 +1,42 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from ReviewersData import Ui_ReviewersData
-from Loading import Ui_LoadingDialog
+from functools import partial
+from .Loading import Ui_LoadingDialog
 
+import sys
 
+app = QtWidgets.QApplication(sys.argv)
+SelectReviewers = QtWidgets.QMainWindow()
+
+names = []
 class Ui_SelectReviewers(object):
-    
-    def openReviewersDataWindow(self):
+
+    def __init__(self):
+        from .ReviewersData import Ui_ReviewersData
         self.reviewersDataWindow = QtWidgets.QMainWindow()
         self.reviewersDataUi = Ui_ReviewersData()
+
+    def openReviewersDataWindow(self):
         self.reviewersDataUi.setupUi(self.reviewersDataWindow)
         self.reviewersDataWindow.show()
-        
+    
+    def setReviewerName(self, Name):
+        names.append(Name)
+
+    def getReviewerName(self):
+        return names
+    
+    def check(self, label):
+        if label == 'HL':
+            self.label_HL.setText("Checked ✔️")
+    
     def openLoadingWindow(self):
         self.loadingWindow = QtWidgets.QDialog()
         self.loadingUi = Ui_LoadingDialog()
         self.loadingUi.setupUi(self.loadingWindow)
         self.loadingWindow.show()
+        self.loadingUi.saveData()
+        self.loadingWindow.close()
+        app.quit()
         
     def setupUi(self, SelectReviewers):
         SelectReviewers.setObjectName("SelectReviewers")
@@ -69,7 +90,7 @@ class Ui_SelectReviewers(object):
         font.setWeight(50)
         self.button_reviewer_A.setFont(font)
         self.button_reviewer_A.setObjectName("pushButton")
-        
+        self.button_reviewer_A.clicked.connect(partial(self.setReviewerName, 'A'))
         self.button_reviewer_S = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.openReviewersDataWindow())
         self.button_reviewer_S.clicked.connect(SelectReviewers.close)
         self.button_reviewer_S.setGeometry(QtCore.QRect(150, 120, 101, 28))
@@ -79,6 +100,8 @@ class Ui_SelectReviewers(object):
         font.setWeight(50)
         self.button_reviewer_S.setFont(font)
         self.button_reviewer_S.setObjectName("pushButton_2")
+        self.button_reviewer_S.clicked.connect(partial(self.setReviewerName, 'S'))
+
         
         self.button_reviewer_SH = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.openReviewersDataWindow())
         self.button_reviewer_SH.clicked.connect(SelectReviewers.close)
@@ -89,6 +112,8 @@ class Ui_SelectReviewers(object):
         font.setWeight(50)
         self.button_reviewer_SH.setFont(font)
         self.button_reviewer_SH.setObjectName("pushButton_3")
+        self.button_reviewer_SH.clicked.connect(partial(self.setReviewerName, 'SH'))
+
         
         self.button_reviewer_AM= QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.openReviewersDataWindow())
         self.button_reviewer_AM.clicked.connect(SelectReviewers.close)
@@ -99,6 +124,8 @@ class Ui_SelectReviewers(object):
         font.setWeight(50)
         self.button_reviewer_AM.setFont(font)
         self.button_reviewer_AM.setObjectName("pushButton_4")
+        self.button_reviewer_AM.clicked.connect(partial(self.setReviewerName, 'AM'))
+
         
         self.button_reviewer_AS = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.openReviewersDataWindow())
         self.button_reviewer_AS.clicked.connect(SelectReviewers.close)
@@ -109,6 +136,8 @@ class Ui_SelectReviewers(object):
         font.setWeight(50)
         self.button_reviewer_AS.setFont(font)
         self.button_reviewer_AS.setObjectName("pushButton_5")
+        self.button_reviewer_AS.clicked.connect(partial(self.setReviewerName, 'AS'))
+
         
         self.button_reviewer_SS = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.openReviewersDataWindow())
         self.button_reviewer_SS.clicked.connect(SelectReviewers.close)
@@ -119,6 +148,8 @@ class Ui_SelectReviewers(object):
         font.setWeight(50)
         self.button_reviewer_SS.setFont(font)
         self.button_reviewer_SS.setObjectName("pushButton_6")
+        self.button_reviewer_SS.clicked.connect(partial(self.setReviewerName, 'SS'))
+
         
         self.button_reviewer_M = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.openReviewersDataWindow())
         self.button_reviewer_M.clicked.connect(SelectReviewers.close)
@@ -129,6 +160,8 @@ class Ui_SelectReviewers(object):
         font.setWeight(50)
         self.button_reviewer_M.setFont(font)
         self.button_reviewer_M.setObjectName("pushButton_7")
+        self.button_reviewer_M.clicked.connect(partial(self.setReviewerName, 'M'))
+
         
         self.button_reviewer_J = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.openReviewersDataWindow())
         self.button_reviewer_J.clicked.connect(SelectReviewers.close)
@@ -139,6 +172,8 @@ class Ui_SelectReviewers(object):
         font.setWeight(50)
         self.button_reviewer_J.setFont(font)
         self.button_reviewer_J.setObjectName("pushButton_8")
+        self.button_reviewer_J.clicked.connect(partial(self.setReviewerName, 'J'))
+
         
         self.button_reviewer_H = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.openReviewersDataWindow())
         self.button_reviewer_H.clicked.connect(SelectReviewers.close)
@@ -149,7 +184,8 @@ class Ui_SelectReviewers(object):
         font.setWeight(50)
         self.button_reviewer_H.setFont(font)
         self.button_reviewer_H.setObjectName("pushButton_9")
-        
+        self.button_reviewer_H.clicked.connect(partial(self.setReviewerName, 'H'))
+
         self.button_reviewer_HL = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.openReviewersDataWindow())
         self.button_reviewer_HL.clicked.connect(SelectReviewers.close)
         self.button_reviewer_HL.setGeometry(QtCore.QRect(370, 220, 101, 28))
@@ -159,6 +195,8 @@ class Ui_SelectReviewers(object):
         font.setWeight(50)
         self.button_reviewer_HL.setFont(font)
         self.button_reviewer_HL.setObjectName("pushButton_10")
+        self.button_reviewer_HL.clicked.connect(partial(self.setReviewerName, 'HL'))
+
         
         self.button_reviewer_MA = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.openReviewersDataWindow())
         self.button_reviewer_MA.clicked.connect(SelectReviewers.close)
@@ -169,12 +207,15 @@ class Ui_SelectReviewers(object):
         font.setWeight(50)
         self.button_reviewer_MA.setFont(font)
         self.button_reviewer_MA.setObjectName("pushButton_11")
+        self.button_reviewer_MA.clicked.connect(partial(self.setReviewerName, 'MA'))
+
         
         self.label_HL = QtWidgets.QLabel(self.centralwidget)
         self.label_HL.setGeometry(QtCore.QRect(330, 220, 31, 16))
-        self.label_HL.setStyleSheet("color: rgb(170, 0, 0);")
-        self.label_HL.setText("")
+        self.label_HL.setStyleSheet("color: rgb(0, 170, 0);")
         self.label_HL.setObjectName("label_10")
+        self.button_reviewer_HL.clicked.connect(partial(self.check,'HL'))
+
         
         self.label_SS = QtWidgets.QLabel(self.centralwidget)
         self.label_SS.setGeometry(QtCore.QRect(330, 170, 31, 16))
@@ -278,11 +319,4 @@ class Ui_SelectReviewers(object):
         self.pushButtonNext.setText(_translate("SelectReviewers", "Next")) 
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    SelectReviewers = QtWidgets.QMainWindow()
-    ui = Ui_SelectReviewers()
-    ui.setupUi(SelectReviewers)
-    SelectReviewers.show()
-    sys.exit(app.exec_())
+    

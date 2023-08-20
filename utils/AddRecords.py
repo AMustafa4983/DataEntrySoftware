@@ -1,6 +1,6 @@
 import openpyxl
 
-columnsName = {"A":6, "S":7, "SH":8, "AM":9, "AS":10, "H":11,"J":12, "S S":13, "H L":14, "M":15, "MA":16}
+columnsName = {"A":6, "S":7, "SH":8, "AM":9, "AS":10, "H":11,"J":12, "SS":13, "HL":14, "M":15, "MA":16}
 
 class AddRecords():
     '''

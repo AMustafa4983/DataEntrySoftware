@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
+records = {}
 class Ui_LoadingDialog(object):
     
     def setupUi(self, LoadingDialog):
@@ -33,9 +33,21 @@ class Ui_LoadingDialog(object):
     def retranslateUi(self, LoadingDialog):
         _translate = QtCore.QCoreApplication.translate
         LoadingDialog.setWindowTitle(_translate("LoadingDialog", "Dialog"))
-        self.label.setText(_translate("LoadingDialog", "Your excel is being "))
-        self.label_2.setText(_translate("LoadingDialog", "Generated...."))
+        self.label.setText(_translate("LoadingDialog", "Your excel Generated"))
+        self.label_2.setText(_translate("LoadingDialog", "Successfully!"))
 
+    def saveData(self):
+        from .ReviewersData import data
+        from .SelectReviewers import names
+
+        for name in names:
+            for ls in data:
+                for i in range(len(ls)):
+                    if ls[i]=='':
+                        ls[i] = '--'
+                records[name] = ls
+        
+    
 
 if __name__ == "__main__":
     import sys
