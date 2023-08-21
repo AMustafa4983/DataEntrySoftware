@@ -1,4 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import time 
+
 
 records = {}
 class Ui_LoadingDialog(object):
@@ -46,6 +48,8 @@ class Ui_LoadingDialog(object):
                     if ls[i]=='':
                         ls[i] = '--'
                 records[name] = ls
+        time.sleep(5)
+        
         
     
 

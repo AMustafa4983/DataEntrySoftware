@@ -7,7 +7,7 @@ attrs==23.1.0
 Automat==20.2.0
 bcrypt==3.2.0
 beautifulsoup4==4.10.0
-blinker==1.4
+blinker==1.6.2
 Brlapi==0.8.3
 Brotli==1.0.9
 cclib==1.6.2
@@ -34,6 +34,7 @@ email-validator==2.0.0
 et-xmlfile==1.1.0
 fasteners==0.14.1
 filelock==3.12.2
+Flask==2.3.2
 fuse-python==1.0.2
 future==0.18.2
 gpg==1.16.0
@@ -57,6 +58,7 @@ language-selector==0.1
 launchpadlib==1.10.16
 lazr.restfulclient==0.14.4
 lazr.uri==1.0.6
+loading==0.0.1
 lockfile==0.12.2
 louis==3.20.0
 lxml==4.8.0
