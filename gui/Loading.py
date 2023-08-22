@@ -41,13 +41,14 @@ class Ui_LoadingDialog(object):
     def saveData(self):
         from .ReviewersData import data
         from .SelectReviewers import names
-
+        
         for name in names:
             for ls in data:
                 for i in range(len(ls)):
                     if ls[i]=='':
                         ls[i] = '--'
                 records[name] = ls
+        print(records)
         time.sleep(5)
         
         
